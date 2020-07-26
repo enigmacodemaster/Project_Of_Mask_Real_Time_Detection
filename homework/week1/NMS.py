@@ -12,25 +12,26 @@ def NMS(lists, thre):
     areas = (x2 - x1 + 1) * (y2 - y1 + 1)
     order = scores.argsort()[::-1]
 
-    keep = []
+    res = []
 
     while order.size > 0:
         i = order[0]
-        keep.append(i)
+        res.append(i)
 
         xx1 = np.maximum(x1[i], x1[order[1:]])
         yy1 = np.maximum(y1[i], y1[order[1:]])
         xx2 = np.minimum(x2[i], x2[order[1:]])
         yy2 = np.minimum(y2[i], y2[order[1:]])
 
-        w = np.maximum(0.0, xx2 - xx1 + 1)
-        h = np.maximum(0.0, yy2 - yy1 + 1)
-        inter = w * h
+        width = np.maximum(0.0, xx2 - xx1 + 1)
+        height = np.maximum(0.0, yy2 - yy1 + 1)
 
-        over = inter / (areas[i] + areas[order[1:]] - inter)
+        interaction = width * height
+
+        over = interaction / (areas[i] + areas[order[1:]] - interaction)
 
         # 保留IoU小于阈值的box
         inds = np.where(over <= thre)[0]
         order = order[inds + 1]
 
-    return keep
+    return res
