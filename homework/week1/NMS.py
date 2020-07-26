@@ -14,7 +14,7 @@ def NMS(lists, thre):
 
     keep = []
 
-    while order.size() > 0:
+    while order.size > 0:
         i = order[0]
         keep.append(i)
 
@@ -25,13 +25,12 @@ def NMS(lists, thre):
 
         w = np.maximum(0.0, xx2 - xx1 + 1)
         h = np.maximum(0.0, yy2 - yy1 + 1)
-
         inter = w * h
 
-        ovr = inter / (area[i] + areas[order[1:]] - inter)
+        over = inter / (areas[i] + areas[order[1:]] - inter)
 
         # 保留IoU小于阈值的box
-        inds = np.where(ovr <= thre)[0]
+        inds = np.where(over <= thre)[0]
         order = order[inds + 1]
 
     return keep
