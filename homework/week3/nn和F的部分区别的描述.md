@@ -6,7 +6,7 @@
 1. nn.CrossEntropyLoss()和F.cross_entropy()
 
 使用方式：
-```
+```Python
 import torch.nn as nn
 import torch.nn.funtional as F
 
@@ -22,7 +22,7 @@ loss = F.cross_entropy(input_,target)  # 直接调用函数
 ```
 
 2. nn.NLLLoss()和F.nll_loss()的使用
-```
+```Python
 nll = nn.NLLLoss()
 input1 = torch.tensor([[-0.4076, -1.4076, -2.4076]])
 target = torch.tensor([0])
@@ -36,7 +36,7 @@ res = F.nll_loss(input1, target)
 ```
 
 3. nn.Softmax和F.softmax
-```
+```Python
 softFunc = nn.Softmax(dim=1)
 input1 = torch.tensor([[3,5,7]]).float()
 
@@ -50,7 +50,7 @@ res2 = F.softmax(input1, dim=1) # 按照行
 
 
 4. nn.LogSoftmax和F.log_softmax
-```
+```Python
 input1 = torch.randn(2,3)
 output = F.log_softmax(input1, dim=1)
 
@@ -89,7 +89,7 @@ class Conv2d(ConvNd):
 #### 3. nn.CrossEntropyLoss()和F.cross_entropy()的区别
 
 **参数：**
-```
+```Python
 # F中的函数原型
 torch.nn.functional.cross_entropy(input, target, weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean')
 ```
@@ -99,7 +99,7 @@ torch.nn.functional.cross_entropy(input, target, weight=None, size_average=None,
 * weight: 分别制定每个类别占的loss权重。1-D tensor。n个元素，代表n个类别的权重。如果训练样本不是很均衡的话，这个参数很有用。
 * reduction='mean'，代表对N个样本的loss进行求平均之后返回；reduction='sum'，代表对N个样本的loss求和之后返回；'none'，代表直接返回n分样本的loss。
 
-```
+```Python
 # nn中的原型
 # 这是一个类
 torch.nn.CrossEntropyLoss(weight:Optional[torch.Tensor] = None, size_average = None, ignore_index: int = -100, reduce = None, reduction: str = 'mean')
@@ -123,7 +123,7 @@ loss(x, class) = -\log(\frac{e^{x[class]}}{\displaystyle \sum_{j}{e^{x[j]}}})
 #### 4. nn.NLLLoss()和F.nll_loss()的区别
 
 **参数方面：** 一个是类，一个是函数
-```
+```Python
 # nn
 torch.nn.functional.nll_loss(input, target, weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean')
 ```
@@ -131,7 +131,7 @@ target: 类别索引，目标标签
 
 input: 对数概率向量
 
-```
+```Python
 # F
 torch.nn.NLLLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='elementwise_mean')
 ```
