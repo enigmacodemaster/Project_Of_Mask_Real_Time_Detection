@@ -70,6 +70,8 @@ nn中定义的是类，F中定义的是函数。二者同时存在的意义在�
 
 比如我们看到，torch.nn.Conv2d的源码中，forward方法就是用F中的conv2d函数定义的。
 
+并且，functional定义的层不可自动学习参数，而nn定义的可以，如果想要使functional定义的层可以自动学习参数，要用nn.Parameter封装，nn.functional设计的初衷是针对一些不可自动学习参数的层，如激活层、BN层，这些层就不需要在nn.Module中定义了。当然，这两者之间没有严格的好坏。
+
 ```Python
 import torch.nn.functional as F
 class Conv2d(ConvNd):
