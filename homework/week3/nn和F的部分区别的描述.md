@@ -115,7 +115,7 @@ torch.nn.CrossEntropyLoss(weight:Optional[torch.Tensor] = None, size_average = N
 ```math
 loss(x, class) = -\log(\frac{e^{x[class]}}{\displaystyle \sum_{j}{e^{x[j]}}})
 ```
-从数学计算上来讲，torch中的交叉熵计算是logSoftmax和NllLoss的整合，等同于先计算log-Softmax，然后再将上一步的计算结果计算NLLLoss。
+从数学计算上来讲，++torch中的交叉熵计算是logSoftmax和NllLoss的整合，等同于先计算log-Softmax，然后再将上一步的计算结果计算NLLLoss。++
 
 
 **作用和目的层面：**
