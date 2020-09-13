@@ -1,2 +1,2 @@
 #### 说明
-将原来create_model中的Conv2d，将group参数替换为输出的channels个数，并再接一个kernel_size为1的Conv2d，即可达到depthwise Convolution的效果
+对于原create_model中的Conv2d，将group的参数替换为输出channel的个数，然后再接一个kernel_size为1的Conv2d，即可达到Depthwise Convolution的效果
